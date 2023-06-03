@@ -97,11 +97,6 @@ df['WKT'] = df['WKT'].apply(lambda x: x.encode('ascii', 'ignore').decode('ascii'
 df['InputID'] = df['InputID'].apply(lambda x: x.encode('ascii', 'ignore').decode('ascii'))
 df['TargetID'] = df['TargetID'].apply(lambda x: x.encode('ascii', 'ignore').decode('ascii'))
 df['InputID'].unique()
-E={}
-for index, row in df.iterrows():
-    E.update({(int(row['stop_id']), str(row['stop_name'])):row['stop_lat'],row['stop_lon']/1000})
-print(E)
-
 T=prim_mst(G,'TALCA')
 cost=np.sum([d['weight'] for (u,v,d) in T])
 print('El costo del arbol recubridor es : {}'.format(cost))
